@@ -24,7 +24,7 @@ function NiceCountryInput(domElement) {
     $(domElement).append("<div class='niceCountryInputMenu'><span class='niceCountryInputMenuDefaultText'><a><img class='niceCountryInputMenuCountryFlag' src='' /><span>"+this.i18nwait+"…</span></a></span><div class='niceCountryInputMenuDropdown'><span style='font-size: 10px;'>▼</span></div></div>");
     $(domElement).append("<div class='niceCountryInputMenuFilter' style='display: none;'><input placeholder='"+this.i18nfilter+"…'/></div>");
     $(domElement).append("<div class='niceCountryInputMenuDropdownContent' style='display: none;' />");
-    $(domElement).append("<input class='niceCountryInputMenuInputHidden' type='hidden'/>");
+    $(domElement).append("<input name='country' value='BD' class='niceCountryInputMenuInputHidden' type='hidden'/>");
     /*Data attributes (selectors)*/
     this.defaultText = $(domElement).find(".niceCountryInputMenuDefaultText");
     this.selectOneMenu = $(domElement).find(".niceCountryInputMenu");

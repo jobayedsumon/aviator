@@ -378,7 +378,7 @@
                                 aria-labelledby="via-email-tab">
                                 <form class="register-form row" action="/auth/register" method="post"
                                     name="registerForm" id="registerViaEmailForm">
-                                    <input type="hidden" name="country" id="countries" value="IN">
+{{--                                    <input type="hidden" name="country" id="countries" value="IN">--}}
                                     <input type="hidden" name="register_type" id="register_type" value="3">
                                     @csrf
                                     <div class="col-md-6 col-12">
@@ -450,14 +450,15 @@
                                                 </span>
                                             </span>
                                             <select class="form-select custom-select" id="currency" name="currency">
-                                                <option selected value="₹">INR</option>
-                                                <option value="$">USD</option>
+                                                <option selected value="৳">BDT</option>
+{{--                                                <option selected value="₹">INR</option>--}}
+{{--                                                <option value="$">USD</option>--}}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="input-group mb-3">
-                                            <div class="niceCountryInputSelector" data-selectedcountry="IN"
+                                            <div class="niceCountryInputSelector" data-selectedcountry="BD"
                                                 data-showspecial="false" data-showflags="true"
                                                 data-i18nall="All selected" data-i18nnofilter="No selection"
                                                 data-i18nfilter="Filter" data-onchangecallback="onChangeCallback">

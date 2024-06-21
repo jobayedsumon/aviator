@@ -11,7 +11,7 @@
                 <button class="deposite-btn rounded-pill d-flex align-items-center me-2">
                     <span class="material-symbols-outlined me-2"> payments </span>
                     <!-- <span>$</span> -->
-                    <span class="me-2" id="header_wallet_balance">₹{{ wallet(user('id')) }}</span>
+                    <span class="me-2" id="header_wallet_balance">৳{{ wallet(user('id')) }}</span>
                     DEPOSIT
                 </button>
             </a>
@@ -34,14 +34,14 @@
 
                             </div>
                         </li>
-					
+
 					<li>
                 <a class="f-12 justify-content-between">
                     <div class="d-flex align-items-center">
                         <span class="material-symbols-outlined ico">
                             volume_mute
                         </span>SOUND
-                        
+
                     </div>
                     <div>
                         <div class="form-check form-switch lg-switch">

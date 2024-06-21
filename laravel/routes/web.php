@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AamarpayController;
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\Gamesetting;
@@ -59,7 +60,7 @@ Route::group(['prefix' => '/admin/', 'middleware' => ['isAdmin']], function () {
     Route::get('/withdrawal-history', [Admin::class, "withdrawalhistory"]);
     Route::get('/amount-setup/{id?}', [Admin::class, "amountsetup"]);
     Route::get('/bank-detail', [Admin::class, "bankdetail"]);
-    
+
     Route::group(['prefix' => 'api/'], function () {
         Route::post('/changepassword', [Adminapi::class, "changepassword"]);
         Route::post('/edituser', [Adminapi::class, "edituser"]);
@@ -114,4 +115,12 @@ Route::group(['middleware' => ['isUser']], function () {
     Route::post('/insert/withdrawal', [Adminapi::class, "withdrawal_query"]);
     Route::post('/depositNow', [Adminapi::class, "depositNow"]);
     Route::post('/wallet_transfer', [Userdetail::class, "wallet_transfer"]);
+});
+
+//AamarPay
+Route::group(['prefix' => 'aamarpay', 'as' => 'aamarpay.'], function () {
+    Route::post('pay', [AamarpayController::class, 'index'])->name('pay');
+    Route::any('success', [AamarpayController::class, 'success'])->name('success');
+    Route::any('fail', [AamarpayController::class, 'fail'])->name('fail');
+    Route::any('cancel', [AamarpayController::class, 'cancel'])->name('cancel');
 });

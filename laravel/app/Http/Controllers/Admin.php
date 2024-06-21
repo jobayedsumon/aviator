@@ -49,7 +49,10 @@ class Admin extends Controller
     }
     public function withdrawalhistory()
     {
-        $history = Transaction::where('category', 'withdraw')->where('type', 'debit')->join('bank_details', 'transactions.userid', '=', 'bank_details.userid')->select('transactions.*','bank_details.accountno','bank_details.ifsccode','bank_details.branchname','bank_details.upi_id','bank_details.mobile_no')->orderBy('transactions.id','desc')->get();
+        $history = Transaction::where('category', 'withdraw')->where('type', 'debit')
+//            ->join('bank_details', 'transactions.userid', '=', 'bank_details.userid')
+//            ->select('transactions.*','bank_details.accountno','bank_details.ifsccode','bank_details.branchname','bank_details.upi_id','bank_details.mobile_no')
+            ->orderBy('transactions.id','desc')->get();
         $title = 'Withdrawal Hitory';
         return view('admin.withdrawhistory', [
             'history' => $history,

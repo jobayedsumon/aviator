@@ -62,7 +62,7 @@
                                                                     <tr>
                                                                         <td>{{ $loop->iteration }}</td>
                                                                         <td>{{ ucfirst($item->platform) }}</td>
-                                                                        <td>₹{{ number_format($item->amount,2) }}</td>
+                                                                        <td>৳{{ number_format($item->amount,2) }}</td>
                                                                         <td>{{ ucfirst($item->category) }}</td>
                                                                         <td>{{ ucfirst($item->type) }}</td>
                                                                         <td>{{ $item->remark }}</td>

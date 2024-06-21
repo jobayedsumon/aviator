@@ -213,7 +213,7 @@ class Adminapi extends Controller
     {
         $trn = new Transaction;
         $trn->userid = user('id');
-        $trn->platform = platform($r->payment_gateway_type);
+        $trn->platform = $r->payment_gateway_type;
         $trn->transactionno = $r->trn;
         $trn->type = 'credit';
         $trn->amount = $r->amount;
@@ -229,10 +229,11 @@ class Adminapi extends Controller
         // return $r->all();
         $trn = new Transaction;
         $trn->userid = user('id');
-        $trn->platform = platform($r->payment_gateway_type);
+        $trn->platform = $r->payment_gateway_type;
         $trn->transactionno = '';
         $trn->type = 'debit';
         $trn->amount = $r->amount;
+        $trn->mobile_no = $r->mobile_no;
         $trn->category = 'withdraw';
         $trn->remark = 'Processing';
         $trn->status = '0';
@@ -240,29 +241,33 @@ class Adminapi extends Controller
             if (wallet(user('id'), 'num') > $r->amount) {
                 addwallet(user('id'), $r->amount, '-');
             }
-            $existbank = Bank_detail::where('userid', user('id'))->orderBy('id', 'desc')->first();
-            if ($existbank) {
-                Bank_detail::where('userid', user('id'))->update([
-                    "bankname" => $r->bank_name,
-                    "accountno" => $r->account_no,
-                    "ifsccode" => $r->ifsc_code,
-                    "upi_id" => $r->upi_id,
-                    "mobile_no" => $r->mobile,
-                ]);
-                return redirect('/withdraw?msg=Success');
-            } else {
-                $bank = new Bank_detail;
-                $bank->userid = user('id');
-                $bank->bankname = $r->bank_name;
-                $bank->accountno = $r->account_no;
-                $bank->ifsccode = $r->ifsc_code;
-                $bank->upi_id = $r->upi_id;
-                $bank->mobile_no = $r->mobile;
-                if ($bank->save()) {
-                    return redirect('/withdraw?msg=Success');
-                }
-                return redirect('/withdraw?msg=error');
-            }
+            return redirect('/withdraw?msg=Success');
+
+//            $existbank = Bank_detail::where('userid', user('id'))->orderBy('id', 'desc')->first();
+//            if ($existbank) {
+//                Bank_detail::where('userid', user('id'))->update([
+//                    "bankname" => $r->bank_name,
+//                    "accountno" => $r->account_no,
+//                    "ifsccode" => $r->ifsc_code,
+//                    "upi_id" => $r->upi_id,
+//                    "mobile_no" => $r->mobile,
+//                ]);
+//                return redirect('/withdraw?msg=Success');
+//            } else {
+//                $bank = new Bank_detail;
+//                $bank->userid = user('id');
+//                $bank->bankname = $r->bank_name;
+//                $bank->accountno = $r->account_no;
+//                $bank->ifsccode = $r->ifsc_code;
+//                $bank->upi_id = $r->upi_id;
+//                $bank->mobile_no = $r->mobile;
+//                if ($bank->save()) {
+//                    return redirect('/withdraw?msg=Success');
+//                }
+//                return redirect('/withdraw?msg=error');
+//            }
+        } else {
+            return redirect('/withdraw?msg=error');
         }
     }
 }

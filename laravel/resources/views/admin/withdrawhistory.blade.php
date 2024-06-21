@@ -23,7 +23,7 @@
                                     <th>User id</th>
                                     <th>Name</th>
                                     <th>Transaction No.</th>
-                                    <th>Bank Detail</th>
+                                    <th>Payment Detail</th>
                                     <th>Amount</th>
                                     <th>Status</th>
                                     <th>Created</th>
@@ -39,13 +39,13 @@
                                             <td>{{ appvalidate(userdetail($history->userid, 'name')) }}</td>
                                             <td>{{ appvalidate($history->transactionno) }}</td>
                                             <td>
-                                                <div>Bank name: {{ appvalidate($history->bankname) }}</div><br>
-                                                <div>A/C No.: {{ appvalidate($history->accountno) }}</div><br>
-                                                <div>IFSC Code: {{ appvalidate($history->ifsccode) }}</div><br>
+                                                <div>Payment Type: {{ appvalidate($history->platform) }}</div><br>
+{{--                                                <div>A/C No.: {{ appvalidate($history->accountno) }}</div><br>--}}
+{{--                                                <div>IFSC Code: {{ appvalidate($history->ifsccode) }}</div><br>--}}
                                                 <div>Mobile: {{ appvalidate($history->mobile_no) }}</div><br>
-                                                <div>UPI Id: {{ appvalidate($history->upi_id) }}</div>
+{{--                                                <div>UPI Id: {{ appvalidate($history->upi_id) }}</div>--}}
                                             </td>
-                                            <td>₹{{ appvalidate(number_format($history->amount, 2)) }}</td>
+                                            <td>৳{{ appvalidate(number_format($history->amount, 2)) }}</td>
                                             <td><label
                                                     class="badge badge-{{ status($history->status, 'recharge')['color'] }}">{{ status($history->status, 'recharge')['name'] }}</label>
                                             </td>

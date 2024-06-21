@@ -60,9 +60,9 @@ class Authentication extends Controller
                     $user->mobile = $r->mobile;
                     $user->email = $r->email;
                     $user->password = Hash::make($r->password);
-                    $user->currency = '₹';
+                    $user->currency = $r->currency;
                     $user->gender = $r->gender;
-                    $user->country = 'IN';
+                    $user->country = $r->country;
                     $user->status = '1';
                     $user->promocode = $r->promocode;
                     if ($user->save()) {
@@ -92,9 +92,9 @@ class Authentication extends Controller
                 $user->mobile = $r->mobile;
                 $user->email = $r->email;
                 $user->password = Hash::make($r->password);
-                $user->currency = '₹';
+                $user->currency = $r->currency;
                 $user->gender = $r->gender;
-                $user->country = 'IN';
+                $user->country = $r->country;
                 $user->status = '1';
                 $user->promocode = $r->promocode;
                 if ($user->save()) {

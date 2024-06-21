@@ -31,21 +31,21 @@
                                 <!--        <div class="PaymentCard_limit">PhonePe</div>-->
                                 <!--    </button>-->
                                 <!--</div>-->
-                                
-                                
+
+
                                 <div class="grid-list">
                                     <button class="btn payment-btn" data-bs-toggle="modal" data-bs-target="#withdraw-modal"
-                                        onclick="withdraw('6' , '')">
-                                        <img src="images/app-logo/interkassa_net_banking.svg " />
-                                        <div class="PaymentCard_limit">Net Banking</div>
+                                        onclick="withdraw('bkash' , '')">
+                                        <img src="images/app-logo/bkash.png " />
+                                        <div class="PaymentCard_limit">Bkash</div>
                                     </button>
                                 </div>
 
                                 <div class="grid-list">
                                     <button class="btn payment-btn" data-bs-toggle="modal" data-bs-target="#withdraw-modal"
-                                        onclick="withdraw('3' , '')">
-                                        <img src="images/app-logo/upiMt.svg " />
-                                        <div class="PaymentCard_limit">UPI</div>
+                                        onclick="withdraw('nagad' , '')">
+                                        <img src="images/app-logo/nagad.png " />
+                                        <div class="PaymentCard_limit">Nagad</div>
                                     </button>
                                 </div>
 
@@ -104,60 +104,60 @@
                         </div>
                         <label id="amount-error" class="error" for="amount"></label>
 
-                        <div id="account_div">
-                            <label for="account_no" class="form-label text-dark">Account Number</label>
-                            <div class="login-controls">
-                                <label for="account_no">
-                                    <input type="text" class="form-control text-indent-0" id="account_no"
-                                        name="account_no" value="{{isset($bank->accountno) ? $bank->accountno : ''}}">
-                                </label>
-                            </div>
-                            <label id="account_no-error" class="error" for="account_no"></label>
-                        </div>
+{{--                        <div id="account_div">--}}
+{{--                            <label for="account_no" class="form-label text-dark">Account Number</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="account_no">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="account_no"--}}
+{{--                                        name="account_no" value="{{isset($bank->accountno) ? $bank->accountno : ''}}">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="account_no-error" class="error" for="account_no"></label>--}}
+{{--                        </div>--}}
 
-                        <div id="acc_holder_name_div">
-                            <label for="account_holder_name" class="form-label text-dark ">Account Holder Name</label>
-                            <div class="login-controls">
-                                <label for="account_holder_name">
-                                    <input type="text" class="form-control text-indent-0" id="account_holder_name"
-                                        name="account_holder_name" value="{{user('name')}}">
-                                </label>
-                            </div>
-                            <label id="account_holder_name-error" class="error" for="account_holder_name"></label>
-                        </div>
+{{--                        <div id="acc_holder_name_div">--}}
+{{--                            <label for="account_holder_name" class="form-label text-dark ">Account Holder Name</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="account_holder_name">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="account_holder_name"--}}
+{{--                                        name="account_holder_name" value="{{user('name')}}">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="account_holder_name-error" class="error" for="account_holder_name"></label>--}}
+{{--                        </div>--}}
 
-                        <div id="">
-                            <label for="name" class="form-label text-dark ">Bank Name</label>
-                            <div class="login-controls">
-                                <label for="bankname">
-                                    <input type="text" class="form-control text-indent-0" id="bankname"
-                                        name="bank_name" required>
-                                </label>
-                            </div>
-                            <label id="name-error" class="error" for="name"></label>
-                        </div>
+{{--                        <div id="">--}}
+{{--                            <label for="name" class="form-label text-dark ">Bank Name</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="bankname">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="bankname"--}}
+{{--                                        name="bank_name" required>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="name-error" class="error" for="name"></label>--}}
+{{--                        </div>--}}
 
-                        <div id="ifsc_code_div">
-                            <label for="ifsc_code" class="form-label text-dark ">IFSC Code</label>
-                            <div class="login-controls">
-                                <label for="ifsc_code">
-                                    <input type="text" class="form-control text-indent-0" id="ifsc_code"
-                                        name="ifsc_code" value="{{isset($bank->ifsccode) ? $bank->ifsccode : ''}}">
-                                </label>
-                            </div>
-                            <label id="ifsc_code-error" class="error" for="ifsc_code"></label>
-                        </div>
+{{--                        <div id="ifsc_code_div">--}}
+{{--                            <label for="ifsc_code" class="form-label text-dark ">IFSC Code</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="ifsc_code">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="ifsc_code"--}}
+{{--                                        name="ifsc_code" value="{{isset($bank->ifsccode) ? $bank->ifsccode : ''}}">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="ifsc_code-error" class="error" for="ifsc_code"></label>--}}
+{{--                        </div>--}}
 
-                        <div id="upi_id_div">
-                            <label for="upi_id" class="form-label text-dark">UPI ID</label>
-                            <div class="login-controls">
-                                <label for="upi_id">
-                                    <input type="text" class="form-control text-indent-0" id="upi_id"
-                                        name="upi_id" value="{{isset($bank->upi_id) ? $bank->upi_id : ''}}">
-                                </label>
-                            </div>
-                            <label id="upi_id-error" class="error" for="upi_id"></label>
-                        </div>
+{{--                        <div id="upi_id_div">--}}
+{{--                            <label for="upi_id" class="form-label text-dark">UPI ID</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="upi_id">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="upi_id"--}}
+{{--                                        name="upi_id" value="{{isset($bank->upi_id) ? $bank->upi_id : ''}}">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="upi_id-error" class="error" for="upi_id"></label>--}}
+{{--                        </div>--}}
 
                         <div id="mobile_div">
                             <label for="mobile_no" class="form-label text-dark">Mobile Number</label>
@@ -170,27 +170,27 @@
                             <label id="mobile_no-error" class="error" for="mobile_no"></label>
                         </div>
 
-                        <div id="email_div">
-                            <label for="email" class="form-label text-dark">Email</label>
-                            <div class="login-controls">
-                                <label for="email">
-                                    <input type="email" class="form-control text-indent-0" id="email"
-                                        name="email" value="{{user('email')}}">
-                                </label>
-                            </div>
-                            <label id="email-error" class="error" for="email"></label>
-                        </div>
+{{--                        <div id="email_div">--}}
+{{--                            <label for="email" class="form-label text-dark">Email</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="email">--}}
+{{--                                    <input type="email" class="form-control text-indent-0" id="email"--}}
+{{--                                        name="email" value="{{user('email')}}">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="email-error" class="error" for="email"></label>--}}
+{{--                        </div>--}}
 
-                        <div id="address_div">
-                            <label for="address" class="form-label text-dark">Address</label>
-                            <div class="login-controls">
-                                <label for="address">
-                                    <input type="text" class="form-control text-indent-0" id="address"
-                                        name="address">
-                                </label>
-                            </div>
-                            <label id="address-error" class="error" for="address"></label>
-                        </div>
+{{--                        <div id="address_div">--}}
+{{--                            <label for="address" class="form-label text-dark">Address</label>--}}
+{{--                            <div class="login-controls">--}}
+{{--                                <label for="address">--}}
+{{--                                    <input type="text" class="form-control text-indent-0" id="address"--}}
+{{--                                        name="address">--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
+{{--                            <label id="address-error" class="error" for="address"></label>--}}
+{{--                        </div>--}}
 
                         <button class="btn yellow-btn md-btn custm-btn-2 mx-auto mt-3 mb-1">Submit</button>
                     </form>

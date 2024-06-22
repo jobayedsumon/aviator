@@ -38,7 +38,6 @@ class Authentication extends Controller
     {
         $validated = $r->validate([
             'name' => 'required',
-            'gender' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);

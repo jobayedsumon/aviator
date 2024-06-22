@@ -381,7 +381,7 @@
 {{--                                    <input type="hidden" name="country" id="countries" value="IN">--}}
                                     <input type="hidden" name="register_type" id="register_type" value="3">
                                     @csrf
-                                    <div class="col-md-6 col-12">
+                                    <div class="col-md-12 col-12">
                                         <div class="input-group flex-nowrap mb-3 promocode align-items-center">
                                             <span class="input-group-text" id="addon-wrapping">
                                                 <span class="material-symbols-outlined bold-icon">
@@ -392,19 +392,19 @@
                                                 placeholder="Name" name="name">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="input-group flex-nowrap mb-3 promocode align-items-center">
-                                            <span class="input-group-text" id="addon-wrapping">
-                                                <span class="material-symbols-outlined bold-icon">
-                                                    male
-                                                </span>
-                                            </span>
-                                            <select class="form-select custom-select" id="gender" name="gender">
-                                                <option selected value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-md-6 col-12">--}}
+{{--                                        <div class="input-group flex-nowrap mb-3 promocode align-items-center">--}}
+{{--                                            <span class="input-group-text" id="addon-wrapping">--}}
+{{--                                                <span class="material-symbols-outlined bold-icon">--}}
+{{--                                                    male--}}
+{{--                                                </span>--}}
+{{--                                            </span>--}}
+{{--                                            <select class="form-select custom-select" id="gender" name="gender">--}}
+{{--                                                <option selected value="male">Male</option>--}}
+{{--                                                <option value="female">Female</option>--}}
+{{--                                            </select>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="col-12">
                                         <div class="input-group flex-nowrap mb-3 promocode align-items-center">
                                             <span class="input-group-text" id="addon-wrapping">
@@ -465,22 +465,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="input-group flex-nowrap mb-3 promocode align-items-center">
-                                            <span class="input-group-text" id="addon-wrapping">
-                                                <span class="material-symbols-outlined bold-icon">
-                                                    settings
-                                                </span>
-                                            </span>
-                                            <input type="text" class="form-control ps-0" id="promo_code"
-                                                name="promocode" placeholder="Enter Promocode" value="{{isset($_GET['refer']) ? $_GET['refer'] : ''}}">
-                                            {{-- <!-- <div class="CheckButton-icon d-flex align-items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="Icon_icon__2Th0s"><path d="M7 14c-.627 0-1.224-.109-1.802-.264L6.53 11.96c.156.014.309.041.469.041A5 5 0 007 2a4.937 4.937 0 00-3.519 1.481L6 6H0V0l2.055 2.055A6.961 6.961 0 017 0a7 7 0 110 14zM3.703 9.012l4.97-4.08 1.09 1.431-6.113 6.2-.005-.007-.007.006L.23 8.772l1.42-1.249z"></path></svg>
-                                            </div>
-                                            <button class="btn btn-transparent check-btn">Check</button> --> --}}
-                                        </div>
+{{--                                    <div class="col-12">--}}
+{{--                                        <div class="input-group flex-nowrap mb-3 promocode align-items-center">--}}
+{{--                                            <span class="input-group-text" id="addon-wrapping">--}}
+{{--                                                <span class="material-symbols-outlined bold-icon">--}}
+{{--                                                    settings--}}
+{{--                                                </span>--}}
+{{--                                            </span>--}}
+{{--                                            <input type="text" class="form-control ps-0" id="promo_code"--}}
+{{--                                                name="promocode" placeholder="Enter Promocode" value="{{isset($_GET['refer']) ? $_GET['refer'] : ''}}">--}}
+{{--                                            --}}{{-- <!-- <div class="CheckButton-icon d-flex align-items-center">--}}
+{{--                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" class="Icon_icon__2Th0s"><path d="M7 14c-.627 0-1.224-.109-1.802-.264L6.53 11.96c.156.014.309.041.469.041A5 5 0 007 2a4.937 4.937 0 00-3.519 1.481L6 6H0V0l2.055 2.055A6.961 6.961 0 017 0a7 7 0 110 14zM3.703 9.012l4.97-4.08 1.09 1.431-6.113 6.2-.005-.007-.007.006L.23 8.772l1.42-1.249z"></path></svg>--}}
+{{--                                            </div>--}}
+{{--                                            <button class="btn btn-transparent check-btn">Check</button> --> --}}
+{{--                                        </div>--}}
 
-                                    </div>
+{{--                                    </div>--}}
                                     <div class="col-12">
                                         <label for="promo_code" id="promo_code_error" class="error"></label>
                                     </div>

@@ -1,2 +1,5 @@
 .idea
 error_log
+*.zip
+.DS_Store
+aviatoradmin/.DS_Store

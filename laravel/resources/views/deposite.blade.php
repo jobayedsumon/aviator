@@ -15,14 +15,14 @@
 
                     <div class="pay-options">
                         <div class="payment-cols">
-                            <div class="grid-view">
-                                <div class="grid-list" onclick="paymentGatewayDetails('6')">
-                                    <button class="btn payment-btn" data-tab="aamarpay">
-                                        <img src="images/app-logo/aamarpay.png" />
-                                        <div class="PaymentCard_limit">Min {{setting('min_recharge')}}</div>
-                                    </button>
-                                </div>
-                            </div>
+{{--                            <div class="grid-view">--}}
+{{--                                <div class="grid-list" onclick="paymentGatewayDetails('6')">--}}
+{{--                                    <button class="btn payment-btn" data-tab="aamarpay">--}}
+{{--                                        <img src="images/app-logo/aamarpay.png" />--}}
+{{--                                        <div class="PaymentCard_limit">Min {{setting('min_recharge')}}</div>--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="deposite-box" id="aamarpay">
                                 <form action="{{ route('aamarpay.pay') }}" method="POST">
                                     @csrf

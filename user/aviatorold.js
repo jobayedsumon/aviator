@@ -177,22 +177,26 @@ function cash_out_now(element, section_no, increment = '') {
         }
     }
 
+    var bet_amount;
+
     let bet_id;
     if (section_no == 0) {
         bet_id = $("#main_bet_id").val();
-        var bet_amount = $("#main_bet_section #bet_amount").val();
+        bet_amount = $("#main_bet_section #bet_amount").val();
     } else {
         bet_id = $("#extra_bet_id").val();
-        var bet_amount = $("#extra_bet_section #bet_amount").val();
+        bet_amount = $("#extra_bet_section #bet_amount").val();
     }
     // let incrementor = $("#auto_increment_number").text().slice(0,-1);
     game_id = current_game_data.id
 
-    if (currency_id == 1) {
-        var amt = parseFloat(parseFloat(incrementor) * parseFloat(bet_amount)).toFixed(2);
-    } else {
-        var amt = parseFloat(parseFloat(incrementor) * (parseFloat(bet_amount) / 80)).toFixed(2);
-    }
+    var amt = parseFloat(parseFloat(incrementor) * parseFloat(bet_amount)).toFixed(2);
+
+    // if (currency_id == 1) {
+    //     amt = parseFloat(parseFloat(incrementor) * parseFloat(bet_amount)).toFixed(2);
+    // } else {
+    //     amt = parseFloat(parseFloat(incrementor) * (parseFloat(bet_amount) / 80)).toFixed(2);
+    // }
 
     $('#all_bets .mCSB_container .bet_id_' + member_id + section_no + '').addClass('active');
     $('#all_bets .mCSB_container .bet_id_' + member_id + section_no + ' .column-3').html('<div class="' + get_multiplier_badge_class(incrementor) + ' custom-badge mx-auto">' + incrementor + 'x</div>');

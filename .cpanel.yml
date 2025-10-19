@@ -2,6 +2,9 @@
 deployment:
   tasks:
     - |
+      PHPPATH=/opt/cpanel/ea-php81/root/usr/bin/
+      COMPOSERPATH=/usr/local/bin/
+      
       for DEPLOYPATH in \
         /home2/aviatorj/public_html/
       do
@@ -57,8 +60,8 @@ deployment:
         /bin/cp laravel/package-lock.json $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
         /bin/cp laravel/vite.config.js $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
       
-        /opt/cpanel/ea-php81/root/usr/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
-        /usr/local/bin/php $DEPLOYPATH/laravel/artisan migrate --force >> $DEPLOYPATH/deploy.log
+        $PHPPATH/php $COMPOSERPATH/composer install --working-dir=$DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        $PHPPATH/php $DEPLOYPATH/laravel/artisan migrate --force >> $DEPLOYPATH/deploy.log
       
         echo "Deployed to $DEPLOYPATH" >> $DEPLOYPATH/deploy.log
       done

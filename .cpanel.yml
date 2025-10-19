@@ -1,0 +1,64 @@
+---
+deployment:
+  tasks:
+    - |
+      for DEPLOYPATH in \
+        /home2/aviatorj/public_html/
+      do
+        echo "Deploying to $DEPLOYPATH"
+      
+        /bin/cp -R aviatoradmin $DEPLOYPATH
+        /bin/cp -R css $DEPLOYPATH
+        /bin/cp -R dist $DEPLOYPATH
+        /bin/cp -R images $DEPLOYPATH
+        /bin/cp -R js $DEPLOYPATH
+        /bin/cp -R public $DEPLOYPATH
+        /bin/cp -R socket.io $DEPLOYPATH
+        /bin/cp -R unpkg.com $DEPLOYPATH
+        /bin/cp -R user $DEPLOYPATH
+        /bin/cp -R user $DEPLOYPATH
+        /bin/cp -R vendor $DEPLOYPATH
+      
+        /bin/cp .cpanel.yml $DEPLOYPATH
+        /bin/cp .htaccess $DEPLOYPATH
+        /bin/cp background.mp3 $DEPLOYPATH
+        /bin/cp background1.mp3 $DEPLOYPATH
+        /bin/cp background_bollywood.mp3 $DEPLOYPATH
+        /bin/cp backgrounddimsound.mp3 $DEPLOYPATH
+        /bin/cp cashout.mp3 $DEPLOYPATH
+        /bin/cp cashout_2.mp3 $DEPLOYPATH
+        /bin/cp default.php $DEPLOYPATH
+        /bin/cp favicon.ico $DEPLOYPATH
+        /bin/cp game-start.mp3 $DEPLOYPATH
+        /bin/cp IMPORTANT $DEPLOYPATH
+        /bin/cp index.php $DEPLOYPATH
+        /bin/cp loading.gif $DEPLOYPATH
+        /bin/cp plane-crash.mp3 $DEPLOYPATH
+        /bin/cp plane-crash.mp3.mp3 $DEPLOYPATH
+        /bin/cp robots.txt $DEPLOYPATH
+      
+        /bin/cd laravel
+        DEPLOYPATH=$DEPLOYPATH/laravel/
+      
+        /bin/cp -R app $DEPLOYPATH
+        /bin/cp -R bootstrap $DEPLOYPATH
+        /bin/cp -R config $DEPLOYPATH
+        /bin/cp -R database $DEPLOYPATH
+        /bin/cp -R fonts $DEPLOYPATH
+        /bin/cp -R lang $DEPLOYPATH
+        /bin/cp -R resources $DEPLOYPATH
+        /bin/cp -R routes $DEPLOYPATH
+        /bin/cp -R storage $DEPLOYPATH
+        /bin/cp -R tests $DEPLOYPATH
+
+
+        /bin/cp artisan $DEPLOYPATH
+        /bin/cp composer.json $DEPLOYPATH
+        /bin/cp composer.lock $DEPLOYPATH
+        /bin/cp index.php $DEPLOYPATH
+        /bin/cp package.json $DEPLOYPATH
+        /bin/cp package-lock.json $DEPLOYPATH
+        /bin/cp vite.config.js $DEPLOYPATH
+      
+        /usr/local/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH
+      done

@@ -8,7 +8,7 @@ deployment:
       for DEPLOYPATH in \
         /home2/aviatorj/public_html/
       do
-        echo "Deploying to $DEPLOYPATH" >> $DEPLOYPATH/deploy.log
+        echo "Deploying to $DEPLOYPATH with PHP $PHPPATH and composer $COMPOSERPATH" >> $DEPLOYPATH/deploy.log
       
         /bin/cp -R aviatoradmin $DEPLOYPATH >> $DEPLOYPATH/deploy.log
         /bin/cp -R css $DEPLOYPATH >> $DEPLOYPATH/deploy.log

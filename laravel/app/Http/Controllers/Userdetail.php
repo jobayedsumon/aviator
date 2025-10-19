@@ -98,7 +98,8 @@ class Userdetail extends Controller
     }
 
     public function wallet_transfer(Request $r){
-        $userid = $r->userid;
+        $mobileNumber = $r->mobileNumber;
+        $userid = User::where('mobile' , $mobileNumber)->first()?->id;
         $amount = $r->amount;
         $message = "";
         $isSuccess = false;
@@ -106,16 +107,16 @@ class Userdetail extends Controller
         if ($exist) {
             if (wallet(user('id'),'num') > 0 && wallet(user('id'),'num') >= $amount) {
                 addwallet($userid,$amount);
-                addtransaction($userid, 'Transfer By ~'.user('id'), date("ydmhsi"), 'credit', $amount, 'transfer', 'Success', '1');
+                addtransaction($userid, 'Transfer By ~'.user('mobile'), date("ydmhsi"), 'credit', $amount, 'transfer', 'Success', '1');
                 addwallet(user('id'),$amount,'-');
-                addtransaction(user('id'), 'Transfer To~'.$userid, date("ydmhsi"), 'debit', $amount, 'transfer', 'Success', '1');
+                addtransaction(user('id'), 'Transfer To~'.$mobileNumber, date("ydmhsi"), 'debit', $amount, 'transfer', 'Success', '1');
                 $message = "Success";
                 $isSuccess = true;
             }else {
                 $message = "Amount not enough!!";
             }
         }else{
-            $message = "User Id not found!!";
+            $message = "Mobile number not found!!";
         }
         $res = array("isSuccess" => $isSuccess, "message" => $message);
         return response()->json($res);

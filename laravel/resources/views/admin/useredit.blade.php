@@ -29,17 +29,17 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name"
-                                    value="{{ $user->name }}">
+                                    value="{{ $user?->name }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                                    value="{{ $user->email }}">
+                                    value="{{ $user?->email }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Mobile</label>
                                 <input type="text" class="form-control" id="email" name="emai`l" placeholder="Mobile no."
-                                    value="{{ $user->mobile }}">
+                                    value="{{ $user?->mobile }}">
                             </div>
                             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
                         </form>

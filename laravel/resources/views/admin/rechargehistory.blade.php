@@ -9,6 +9,7 @@
                     <i class="mdi mdi-home"></i>
                 </span> Recharge History
             </h3>
+            <a href="{{ route('newDeposit') }}" class="btn btn-primary btn-sm">Add New</a>
         </div>
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">

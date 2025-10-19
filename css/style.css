@@ -3692,3 +3692,31 @@ width: 100%;
     text-shadow: none;
     color: #449eff;
 }
+.deposit-numbers {
+    list-style: none;
+    margin-top: 1rem;
+}
+.deposit-numbers .deposit-number {
+    margin-bottom: 1rem;
+}
+.deposit-numbers .deposit-number .deposit-number-link {
+    width: fit-content;
+}
+.whatsapp-float-btn {
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#25d366;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index:100;
+}
+
+.whatsapp-float-btn-icon {
+    margin-top:16px;
+}

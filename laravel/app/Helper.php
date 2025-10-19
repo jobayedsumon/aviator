@@ -65,7 +65,7 @@ function userdetail($id, $parameter)
     // Check if the parameter exists in the user data
     if (!isset($data->{$parameter})) {
         throw new Exception("Parameter not found");
-       
+
     }
 
     return $data->{$parameter};
@@ -77,7 +77,7 @@ function admin($parameter)
 function wallet($userid, $type = "string")
 {
     $amount = Wallet::where('userid', $userid)->first();
-    if ($amount->amount >= 0) {
+    if ($amount && $amount->amount >= 0) {
         if ($type == "num") {
             return $amount->amount;
         } else {
@@ -220,4 +220,50 @@ function addtransaction($userid, $platform, $transactionno, $type, $amount, $cat
         return true;
     }
     return false;
+}
+
+function getHelplineNumber()
+{
+    $helplineNumberSetting = Setting::where('category', 'helpline_number')->latest()->first();
+    return $helplineNumberSetting->value;
+}
+
+function newDeposit($userId, $amount, $transactionId)
+{
+    $firstrecharge = Transaction::where('userid', $userId)->where('category', 'recharge')->where('status','0')->get();
+
+    if (count($firstrecharge) == 0) {
+        $level1 = User::where('id', user('promocode', $userId))->first();
+        if ($level1) {
+            $level1amount = ($amount / 100 ) * setting('level1commission');
+            // return $level1amount;
+            addwallet($level1->id, $level1amount);
+            addtransaction($level1->id, 'Level', date("ydmhsi"), 'credit', $level1amount, 'Level_bonus', 'Success', '1');
+            $level2 = User::where('id', $level1->promocode)->first();
+            if ($level2) {
+                $level2amount = ($amount / setting('level2commission')) * 100;
+                addwallet($level2->id, $level2amount);
+                addtransaction($level2->id, 'Level', date("ydmhsi"), 'credit', $level2amount, 'Level_bonus', 'Success', '1');
+
+                $level3 = User::where('id', $level2->promocode)->first();
+                if ($level3) {
+                    $level3amount = ($amount / setting('level3commission')) * 100;
+                    addwallet($level3->id, $level3amount);
+                    addtransaction($level3->id, 'Level', date("ydmhsi"), 'credit', $level3amount, 'Level_bonus', 'Success', '1');
+                }
+            }
+        }
+    }
+
+    $transaction = Transaction::where('transactionno', $transactionId);
+    if ($transaction->exists()) {
+        $transaction->update([
+            "remark" => 'Success',
+            "status" => '1',
+        ]);
+    }
+
+    addtransaction($userId, 'Admin', $transactionId, 'credit', $amount, 'recharge', 'Success', '1');
+
+    addwallet($userId, $amount);
 }

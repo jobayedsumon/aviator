@@ -1,0 +1,2 @@
+Run  php -S localhost:8000 in local to boot the project
+Main starting point is index.php and view is usergame.blade.php

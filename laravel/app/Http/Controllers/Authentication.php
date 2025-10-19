@@ -18,11 +18,11 @@ class Authentication extends Controller
         $data = "";
         $isSuccess = false;
         $message = "";
-        $usernameexist = User::where('mobile', $r->username)->orWhere('email', $r->username)->first();
+        $usernameexist = User::where('mobile', $r->username)->first();
         if ($usernameexist) {
             if (Hash::check($r->password, $usernameexist->password)) {
                 $r->session()->put('userlogin', $usernameexist);
-                $message = "";
+                $message = "Login Successfull";
                 $isSuccess = true;
             } else {
                 $message = "Incorrect Password!";
@@ -38,7 +38,6 @@ class Authentication extends Controller
     {
         $validated = $r->validate([
             'name' => 'required',
-            'email' => 'required',
             'password' => 'required'
         ]);
         $data = "";
@@ -48,16 +47,15 @@ class Authentication extends Controller
         if ($r->promocode != '') {
             $existpromocode = User::where('id', $r->promocode)->first();
             if ($existpromocode) {
-                $olddata = User::where('email', $r->email)->orWhere('mobile', $r->mobile)->get();
+                $olddata = User::where('mobile', $r->mobile)->get();
                 if (count($olddata) > 0) {
-                    $message = "Dublicate Email Id/Mobile No., Please enter Unique Email id";
+                    $message = "Dublicate Mobile No., Please enter Unique Mobile No.";
                 } else {
                     $wallet = new Wallet;
                     $user = new User;
                     $user->name = $r->name;
 					$user->image = "/images/avtar/av-".rand(1,72).".png";
                     $user->mobile = $r->mobile;
-                    $user->email = $r->email;
                     $user->password = Hash::make($r->password);
                     $user->currency = $r->currency;
                     $user->gender = $r->gender;
@@ -65,13 +63,14 @@ class Authentication extends Controller
                     $user->status = '1';
                     $user->promocode = $r->promocode;
                     if ($user->save()) {
-                        $afterregisterdata = User::where('email', $r->email)->orderBy('id', 'desc')->first();
+                        $afterregisterdata = User::where('mobile', $r->mobile)->orderBy('id', 'desc')->first();
                         if ($afterregisterdata) {
                             $wallet->userid = $afterregisterdata->id;
                             $wallet->amount = setting('initial_bonus');
                             if ($wallet->save()) {
-                                $data = array("username" => $afterregisterdata->email, "password" => $r->password, "token" => csrf_token());
+                                $data = array("username" => $afterregisterdata->mobile, "password" => $r->password, "token" => csrf_token());
                                 $isSuccess = true;
+                                $message = "Registration Successfull";
                             }
                         }
                     }
@@ -81,15 +80,14 @@ class Authentication extends Controller
                 $message = "Invalid Promocode";
             }
         } else {
-            $olddata = User::where('email', $r->email)->orWhere('mobile', $r->mobile)->get();
+            $olddata = User::where('mobile', $r->mobile)->get();
             if (count($olddata) > 0) {
-                $message = "Dublicate Email Id/Mobile No., Please enter Unique Email id";
+                $message = "Dublicate Mobile No., Please enter Unique Mobile No.";
             } else {
                 $wallet = new Wallet;
                 $user = new User;
                 $user->name = $r->name;
                 $user->mobile = $r->mobile;
-                $user->email = $r->email;
                 $user->password = Hash::make($r->password);
                 $user->currency = $r->currency;
                 $user->gender = $r->gender;
@@ -97,13 +95,14 @@ class Authentication extends Controller
                 $user->status = '1';
                 $user->promocode = $r->promocode;
                 if ($user->save()) {
-                    $afterregisterdata = User::where('email', $r->email)->orderBy('id', 'desc')->first();
+                    $afterregisterdata = User::where('mobile', $r->mobile)->orderBy('id', 'desc')->first();
                     if ($afterregisterdata) {
                         $wallet->userid = $afterregisterdata->id;
                         $wallet->amount = setting('initial_bonus');
                         if ($wallet->save()) {
-                            $data = array("username" => $afterregisterdata->email, "password" => $r->password, "token" => csrf_token());
+                            $data = array("username" => $afterregisterdata->mobile, "password" => $r->password, "token" => csrf_token());
                             $isSuccess = true;
+                            $message = "Registration Successfull";
                         }
                     }
                 }
@@ -120,11 +119,9 @@ class Authentication extends Controller
             'password' => 'required',
         ]);
         $response = array('status' => 0, 'title' => "Oops!!", 'message' => "Invalid Credential!");
-        // $usernameexist = User::where('mobile', $r->username)->orWhere('email', $r->username)->where('isadmin', '1')->first();
       $usernameexist =  User::where(function ($query) use ($r) {
-    $query->where('mobile', $r->username)
-          ->orWhere('email', $r->username);
-})->where('isadmin', '1')->first();
+            $query->where('mobile', $r->username);
+        })->where('isadmin', '1')->first();
         if ($usernameexist) {
             if (Hash::check($r->password, $usernameexist->password)) {
                 $r->session()->put('adminlogin', $usernameexist);

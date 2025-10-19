@@ -1,3 +1,5 @@
+{{--MAIN FILE--}}
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -32,6 +34,8 @@
 
     <!--====== Bootstrap CSS ======-->
     <link rel="stylesheet" href="css/bootstrap.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="css/style.css" />
@@ -115,7 +119,7 @@
                                     person
                                 </span>
                                 <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="Your email/phone">
+                                    placeholder="Your phone">
                             </label>
                         </div>
 
@@ -174,14 +178,14 @@
                 </div>
                 <div class="modal-body pt-0">
                     <label id="registerError" class="error"></label>
-                    <p class="link-text f-14 email_text">To recover your password, enter your email or phone number
+                    <p class="link-text f-14 email_text">To recover your password, enter your phone number
                         used during registration</p>
                     <form class="login-form" method="post" id="forgotPasswordForm">
                         <input type="hidden" name="otp_id" id="otp_id">
                         <div class="login-controls" id="user_name_div">
                             <label for="Username">
                                 <input type="text" class="form-control text-indent-0" id="user_name"
-                                    placeholder="Your email/phone" name="username" required>
+                                    placeholder="Your phone" name="username" required>
                             </label>
                         </div>
                         <div class="login-controls" id="otp_div">
@@ -294,7 +298,7 @@
                                     aria-controls="via-email" aria-selected="false">
                                     <span class="material-symbols-outlined">
                                         mail
-                                    </span>Via email
+                                    </span>Via Phone Number
                                 </button>
                             </li>
                             {{-- <li class="nav-item" role="presentation">
@@ -414,17 +418,6 @@
                                             </span>
                                             <input type="number" class="form-control ps-0" id="mobile"
                                                 placeholder="Mobile" name="mobile">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="input-group flex-nowrap mb-3 promocode align-items-center">
-                                            <span class="input-group-text" id="addon-wrapping">
-                                                <span class="material-symbols-outlined bold-icon">
-                                                    mail
-                                                </span>
-                                            </span>
-                                            <input type="email" class="form-control ps-0" id="reg_email"
-                                                placeholder="Email" name="email">
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -622,6 +615,11 @@
     </script>
     <script src="user/login.js"></script>
     @yield('js')
+
+    <a href="https://wa.me/{{ substr(getHelplineNumber(), -10) }}" class="whatsapp-float-btn" target="_blank">
+        <i class="fa fa-whatsapp whatsapp-float-btn-icon"></i>
+    </a>
+
 </body>
 
 </html>

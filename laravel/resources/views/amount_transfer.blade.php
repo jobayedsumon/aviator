@@ -12,7 +12,7 @@
                             badge
                         </span>
                     </span>
-                    <input type="text" class="form-control ps-0" id="userid" placeholder="User Id" name="userid">
+                    <input type="text" class="form-control ps-0" id="mobileNumber" placeholder="Mobile Number" name="mobileNumber">
                 </div>
             </div>
             <div class="col-12">

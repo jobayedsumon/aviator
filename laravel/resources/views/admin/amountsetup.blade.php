@@ -8,7 +8,7 @@
             <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
                     <i class="mdi mdi-home"></i>
-                </span> Amount setup
+                </span> Settings
             </h3>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
                                     <td>{{$item->category}}</td>
                                     <td>{{$item->value}}</td>
                                     <td>
-                                        <label class="badge badge-warning" onclick="window.location.href='amount-setup/{{$item->id}}'">Edit</label>
+                                        <label class="badge badge-warning" onclick="window.location.href='/admin/amount-setup/{{$item->id}}'">Edit</label>
                                         {{-- <label class="badge badge-danger" onclick="window.location.href='amount-setup/delete/{{$item->id}}'">Delete</label> --}}
                                     </td>
                                 </tr>
@@ -47,7 +47,7 @@
                 <div class="col-6 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Amount setup</h4>
+                            <h4 class="card-title">Setting</h4>
                             <form class="forms-sample" id="editamountsetup">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $id }}">

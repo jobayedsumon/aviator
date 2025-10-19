@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\Gameresult;
 use App\Models\Userbit;
@@ -23,7 +24,11 @@ class Pages extends Controller
         if (!$bank) {
             $bank = array();
         }
-        return view('deposite',compact('bank'));
+
+        $depositNumbersSetting = Setting::where('category','deposit_numbers')->latest()->first();
+        $depositNumbers = explode(',' , $depositNumbersSetting->value);
+
+        return view('deposite',compact('bank', 'depositNumbers'));
     }
 
     public function amount_transfer()

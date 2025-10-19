@@ -61,5 +61,5 @@ deployment:
         /bin/cp vite.config.js $DEPLOYPATH >> $DEPLOYPATH/deploy.log
       
         /usr/local/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /usr/local/bin/php $DEPLOYPATH/artisan migrate --force --working-dir=$DEPLOYPATH >> $DEPLOYPATH/deploy.log
+        /usr/local/bin/php $DEPLOYPATH/artisan migrate --force >> $DEPLOYPATH/deploy.log
       done

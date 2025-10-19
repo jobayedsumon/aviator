@@ -5,7 +5,7 @@ deployment:
       for DEPLOYPATH in \
         /home2/aviatorj/public_html/
       do
-        echo "Deploying to $DEPLOYPATH"
+        echo "Deploying to $DEPLOYPATH" >> $DEPLOYPATH/deploy.log
       
         /bin/cp -R aviatoradmin $DEPLOYPATH >> $DEPLOYPATH/deploy.log
         /bin/cp -R css $DEPLOYPATH >> $DEPLOYPATH/deploy.log
@@ -37,29 +37,26 @@ deployment:
         /bin/cp plane-crash.mp3.mp3 $DEPLOYPATH >> $DEPLOYPATH/deploy.log
         /bin/cp robots.txt $DEPLOYPATH >> $DEPLOYPATH/deploy.log
       
-        /bin/cd laravel >> $DEPLOYPATH/deploy.log
-        DEPLOYPATH=$DEPLOYPATH/laravel/
-      
-        /bin/cp -R app $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R bootstrap $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R config $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R database $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R fonts $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R lang $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R resources $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R routes $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R storage $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp -R tests $DEPLOYPATH >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/app $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/bootstrap $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/config $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/database $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/fonts $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/lang $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/resources $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/routes $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/storage $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp -R laravel/tests $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
 
 
-        /bin/cp artisan $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp composer.json $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp composer.lock $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp index.php $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp package.json $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp package-lock.json $DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /bin/cp vite.config.js $DEPLOYPATH >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/artisan $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/composer.json $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/composer.lock $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/index.php $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/package.json $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/package-lock.json $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /bin/cp laravel/vite.config.js $DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
       
-        /usr/local/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH >> $DEPLOYPATH/deploy.log
-        /usr/local/bin/php $DEPLOYPATH/artisan migrate --force >> $DEPLOYPATH/deploy.log
+        /usr/local/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
+        /usr/local/bin/php $DEPLOYPATH/laravel/artisan migrate --force >> $DEPLOYPATH/deploy.log
       done

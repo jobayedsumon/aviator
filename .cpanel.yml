@@ -59,4 +59,6 @@ deployment:
       
         /usr/local/bin/php /usr/local/bin/composer install --working-dir=$DEPLOYPATH/laravel >> $DEPLOYPATH/deploy.log
         /usr/local/bin/php $DEPLOYPATH/laravel/artisan migrate --force >> $DEPLOYPATH/deploy.log
+      
+        echo "Deployed to $DEPLOYPATH" >> $DEPLOYPATH/deploy.log
       done

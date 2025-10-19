@@ -2,7 +2,7 @@
 deployment:
   tasks:
     - |
-      PHPPATH=/opt/cpanel/ea-php82/root/usr/bin
+      PHPPATH=/usr/local/bin
       COMPOSERPATH=/usr/local/bin
       
       for DEPLOYPATH in \

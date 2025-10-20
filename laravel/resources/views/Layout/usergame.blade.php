@@ -616,7 +616,7 @@
     <script src="user/login.js"></script>
     @yield('js')
 
-    <a href="https://wa.me/{{ substr(getHelplineNumber(), -10) }}" class="whatsapp-float-btn" target="_blank">
+    <a href="https://wa.me/{{ getHelplineNumber() }}" class="whatsapp-float-btn" target="_blank">
         <i class="fa fa-whatsapp whatsapp-float-btn-icon"></i>
     </a>
 

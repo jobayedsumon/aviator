@@ -29,7 +29,7 @@
                                     <ul class="deposit-numbers">
                                         @forelse($depositNumbers as $depositNumber)
                                         <li class="deposit-number">
-                                            <a href="https://wa.me/{{ substr($depositNumber, -10) }}" target="_blank"
+                                            <a href="https://wa.me/{{ $depositNumber }}" target="_blank"
                                                class="d-flex align-items-center btn btn-success rounded-pill deposit-number-link">
                                                 <i class="fa fa-whatsapp me-2"></i>
                                                 <h6 class="mb-0">{{ $depositNumber }}</h6>

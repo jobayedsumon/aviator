@@ -1,6 +1,6 @@
 @extends('Layout.admindashboard')
 @section('css')
-    
+
 @endsection
 
 @section('content')
@@ -20,17 +20,18 @@
     </nav>
   </div>
   <div class="row">
-    <div class="col-md-4 stretch-card grid-margin">
+      @if(admin('isadmin') === '1')
+        <div class="col-md-4 stretch-card grid-margin">
       <div class="card bg-gradient-danger card-img-holder text-white">
         <div class="card-body">
           <img src="/aviatoradmin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-          <h4 class="font-weight-normal mb-3">Total User 
+          <h4 class="font-weight-normal mb-3">Total User
           </h4>
           <h2 class="mb-5">{{count($user)}}</h2>
         </div>
       </div>
     </div>
-    <div class="col-md-4 stretch-card grid-margin">
+        <div class="col-md-4 stretch-card grid-margin">
       <div class="card bg-gradient-info card-img-holder text-white">
         <div class="card-body">
           <img src="/aviatoradmin/assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
@@ -40,6 +41,7 @@
         </div>
       </div>
     </div>
+      @endif
     <div class="col-md-4 stretch-card grid-margin">
       <div class="card bg-gradient-success card-img-holder text-white">
         <div class="card-body">
@@ -325,5 +327,5 @@
 @endsection
 
 @section('js')
-    
+
 @endsection

@@ -54,8 +54,13 @@ Route::get('/admin', [Admin::class, "login"]);
 Route::group(['prefix' => '/admin/', 'middleware' => ['isAdmin']], function () {
     Route::get('/dashboard', [Admin::class, "dashboard"]);
     Route::get('/user-list', [Admin::class, "userlist"]);
+    Route::get('/admin-moderator', [Admin::class, "adminModerator"]);
+    Route::get('/admin-moderator/create', [Admin::class, "adminModeratorCreate"]);
+    Route::post('/admin-moderator', [Admin::class, "adminModeratorStore"]);
+    Route::post('/admin-moderator/update/{id}', [Admin::class, "adminModeratorUpdate"]);
     Route::get('/change-password', [Admin::class, "chagepassword"]);
     Route::get('/user/edit/{id}', [Admin::class, "useredit"]);
+    Route::get('/admin-moderator/edit/{id}', [Admin::class, "adminModeratorEdit"]);;
     Route::get('/recharge-history', [Admin::class, "rechargehistory"])->name('rechargehistory');
     Route::get('/recharge-history/deposit', [Admin::class, "createNewDeposit"])->name('newDeposit');
     Route::post('/recharge-history/deposit', [Admin::class, "storeNewDeposit"])->name('newDeposit');

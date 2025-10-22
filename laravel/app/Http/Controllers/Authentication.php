@@ -118,10 +118,15 @@ class Authentication extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
+
         $response = array('status' => 0, 'title' => "Oops!!", 'message' => "Invalid Credential!");
-      $usernameexist =  User::where(function ($query) use ($r) {
-            $query->where('mobile', $r->username);
-        })->where('isadmin', '1')->first();
+
+      $usernameexist = User::where('mobile', $r->username)
+          ->where(function ($query) {
+            $query->where('isadmin', '1')
+                ->orWhere('isModerator', true);
+        })->first();
+
         if ($usernameexist) {
             if (Hash::check($r->password, $usernameexist->password)) {
                 $r->session()->put('adminlogin', $usernameexist);
@@ -132,6 +137,7 @@ class Authentication extends Controller
         } else {
             $response = array('status' => 0, 'title' => "Oops!!", 'message' => "Username not exists!");
         }
+
         return response()->json($response);
     }
 }

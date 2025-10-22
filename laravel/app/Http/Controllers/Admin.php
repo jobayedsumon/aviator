@@ -7,6 +7,7 @@ use App\Models\Setting;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Hash;
 use Illuminate\Support\Facades\Validator;
 
 class Admin extends Controller
@@ -28,6 +29,12 @@ class Admin extends Controller
         ]);
     }
 
+    public function adminModerator()
+    {
+        $adminModerators = User::where('isadmin', 1)->orWhere('isModerator', 1)->orderBy('id', 'desc')->get();
+        return view("admin.admin-moderator", compact("adminModerators"));
+    }
+
     public function userlist()
     {
         $userlist = User::where('isadmin', null)->orderBy('id', 'desc')->get();
@@ -38,6 +45,81 @@ class Admin extends Controller
     {
         $user = User::where('isadmin', null)->where('id', $id)->first();
         return view("admin.useredit", compact("user"));
+    }
+
+    public function adminModeratorEdit($id)
+    {
+        $adminModerator = User::where('id', $id)->first();
+        return view("admin.admin-moderator-edit", compact("adminModerator"));
+    }
+
+    public function adminModeratorCreate()
+    {
+        return view("admin.admin-moderator-create");
+    }
+
+    public function adminModeratorStore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'mobile' => 'required',
+            'password' => 'required',
+            'role' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+        $user->status = '1';
+
+        if ($request->role === 'admin') {
+            $user->isadmin = '1';
+            $user->isModerator = false;
+        } else {
+            $user->isModerator = true;
+            $user->isadmin = null;
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return redirect('/admin/admin-moderator')->with('success', 'User created successfully');
+    }
+
+    public function adminModeratorUpdate(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'mobile' => 'required',
+            'role' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = User::where('id', $id)->first();
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->mobile = $request->mobile;
+
+        if ($request->role === 'admin') {
+            $user->isadmin = '1';
+            $user->isModerator = false;
+        } else {
+            $user->isModerator = true;
+            $user->isadmin = null;
+        }
+
+        $user->save();
+
+        return redirect('/admin/admin-moderator')->with('success', 'User updated successfully');
     }
 
     public function chagepassword()
